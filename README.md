@@ -1,0 +1,1 @@
+# knowbi-error-framework
