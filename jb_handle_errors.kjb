@@ -13,7 +13,7 @@
     <parameters>
       <parameter>
         <name>PRM_ERROR_CODE</name>
-        <default_value/>
+        <default_value>010101</default_value>
         <description>Error Code</description>
       </parameter>
     </parameters>
@@ -289,6 +289,72 @@
           <name>ROOT_CHANNEL_ID</name>
         </field>
       </channel-log-table>
+<checkpoint-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<max_nr_retries/>
+<run_retry_period/>
+<namespace_parameter/>
+<save_parameters/>
+<save_result_rows/>
+<save_result_files/>
+        <field>
+          <id>ID_JOB_RUN</id>
+          <enabled>Y</enabled>
+          <name>ID_JOB_RUN</name>
+        </field>
+        <field>
+          <id>ID_JOB</id>
+          <enabled>Y</enabled>
+          <name>ID_JOB</name>
+        </field>
+        <field>
+          <id>JOBNAME</id>
+          <enabled>Y</enabled>
+          <name>JOBNAME</name>
+        </field>
+        <field>
+          <id>NAMESPACE</id>
+          <enabled>Y</enabled>
+          <name>NAMESPACE</name>
+        </field>
+        <field>
+          <id>CHECKPOINT_NAME</id>
+          <enabled>Y</enabled>
+          <name>CHECKPOINT_NAME</name>
+        </field>
+        <field>
+          <id>CHECKPOINT_COPYNR</id>
+          <enabled>Y</enabled>
+          <name>CHECKPOINT_COPYNR</name>
+        </field>
+        <field>
+          <id>ATTEMPT_NR</id>
+          <enabled>Y</enabled>
+          <name>ATTEMPT_NR</name>
+        </field>
+        <field>
+          <id>JOB_RUN_START_DATE</id>
+          <enabled>Y</enabled>
+          <name>JOB_RUN_START_DATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>RESULT_XML</id>
+          <enabled>Y</enabled>
+          <name>RESULT_XML</name>
+        </field>
+        <field>
+          <id>PARAMETER_XML</id>
+          <enabled>Y</enabled>
+          <name>PARAMETER_XML</name>
+        </field>
+</checkpoint-log-table>
    <pass_batchid>N</pass_batchid>
    <shared_objects_file/>
   <entries>
@@ -309,7 +375,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>192</xloc>
+      <xloc>80</xloc>
       <yloc>352</yloc>
     </entry>
     <entry>
@@ -318,7 +384,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;tr_set_error_vars.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;etl&#x2f;tr_set_error_vars.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -401,7 +467,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;jb_check_error_handling_environment.kjb</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;etl&#x2f;jb_check_error_handling_environment.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -479,8 +545,8 @@
       <note>This job receives an error code and uses the information in &#x27;metadata&#x2f;error_codes.xlsx&#x27; to determine the actions to take. &#xa;TODO&#x3a; &#xa;- add checks to see if &#x27;metadata&#x2f;error_codes.xlsx&#x27; contains error codes that contain database logging. &#xa;  If it does, check the connection, create the table if need, proceed if successful. &#xa;- implement database error logging &#xa;- implement email notification&#x2f;logging &#xa;&#xa;If all actions are completed successfully, check if the job needs to be aborted, possibly based on error level &#x28;abort if &#x27;level &#x3e;&#x3d; ERROR&#x27;&#x29;</note>
       <xloc>144</xloc>
       <yloc>96</yloc>
-      <width>1295</width>
-      <heigth>186</heigth>
+      <width>1648</width>
+      <heigth>234</heigth>
       <fontname/>
       <fontsize>-1</fontsize>
       <fontbold>N</fontbold>
