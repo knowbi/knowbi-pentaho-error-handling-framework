@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>tr_error_table</name>
+    <name>tr_error_mail</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,26 +9,6 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
-        <parameter>
-            <name>PRM_ERROR_CODE</name>
-            <default_value/>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>PRM_ERROR_MSG</name>
-            <default_value/>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>PRM_TEMPLATE</name>
-            <default_value/>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>PRM_TRANSFORMATION</name>
-            <default_value/>
-            <description/>
-        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -96,11 +76,11 @@
   </info>
   <notepads>
     <notepad>
-      <note>Implement error logging to table.&#xa;kettle.properties to use &#x28;e.g.&#x29;&#x3a;&#xa;DB_LOG_HOST&#x3d;localhost&#xa;DB_LOG_DB&#x3d;logging&#xa;DB_LOG_PORT&#x3d;5432&#xa;DB_LOG_USER&#x3d;logging&#xa;DB_LOG_PASS&#x3d;logging &#xa;&#xd;&#xa;JNDI Connection DS_LOG</note>
-      <xloc>44</xloc>
-      <yloc>38</yloc>
-      <width>145</width>
-      <heigth>110</heigth>
+      <note>Implement error notification by email&#xa;kettle.properties to use&#x3a; &#xa;PRM_MAIL_S_ADDR&#x3d;&#x3c;ADDRESS&#x3e;&#x40;know.bi&#xa;PRM_MAIL_S_NAME&#x3d;PDI Error Handling&#xa;PRM_MAIL_R_ADDR&#x3d;&#x3c;ADDRESS&#x3e;&#x40;know.bi&#xa;PRM_MAIL_R_NAME&#x3d;&#x3c;RECIPIENT NAME&#x3e;&#xd;&#xa;PRM_SMTP_SERVER&#xd;&#xa;PRM_SMTP_PORT&#xd;&#xa;PRM_AUTH_U_NAME&#xd;&#xa;PRM_AUTH_U_PASS</note>
+      <xloc>82</xloc>
+      <yloc>48</yloc>
+      <width>200</width>
+      <heigth>120</heigth>
       <fontname>Sans</fontname>
       <fontsize>7</fontsize>
       <fontbold>N</fontbold>
@@ -117,39 +97,16 @@
       <drawshadow>Y</drawshadow>
     </notepad>
   </notepads>
-  <connection>
-    <name>DS_LOG</name>
-    <server/>
-    <type>GENERIC</type>
-    <access>JNDI</access>
-    <database>DS_LOG</database>
-    <port>1521</port>
-    <username/>
-    <password>Encrypted </password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
   <order>
-  <hop> <from>Add Counter</from><to>Calc Max</to><enabled>Y</enabled> </hop>
-  <hop> <from>Calc Max</from><to>Filter Last</to><enabled>Y</enabled> </hop>
   <hop> <from>Generate Rows</from><to>Get Variables</to><enabled>Y</enabled> </hop>
   <hop> <from>Get Variables</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
-  <hop> <from>Replace Parameter</from><to>Add Counter</to><enabled>Y</enabled> </hop>
   <hop> <from>Row Normaliser</from><to>Replace Parameter</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter Last</from><to>Get System Info</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get System Info</from><to>Write log</to><enabled>Y</enabled> </hop>
+  <hop> <from>Replace Parameter</from><to>Add Counter</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add Counter</from><to>Calc Max</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calc Max</from><to>Filter Last</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Default</from><to>Send Mail</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter Last</from><to>Calc Message</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calc Message</from><to>Get Default</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add Counter</name>
@@ -174,8 +131,8 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>696</xloc>
-      <yloc>272</yloc>
+      <xloc>636</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -211,8 +168,111 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>854</xloc>
-      <yloc>272</yloc>
+      <xloc>780</xloc>
+      <yloc>227</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Calc Message</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>C_TRANSFORMATION_TAG</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>Transformation&#x3a; </field_a>
+<field_b/>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>Y</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>C_ERROR_TAG</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>Error&#x3a; </field_a>
+<field_b/>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>Y</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>C_HTML_TAG</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a> &#x3c;br&#x3e; </field_a>
+<field_b/>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>Y</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>V_TRANSFORMATION</field_name>
+<calc_type>ADD</calc_type>
+<field_a>C_TRANSFORMATION_TAG</field_a>
+<field_b>PRM_TRANSFORMATION_NAME</field_b>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>Y</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>V_ERROR</field_name>
+<calc_type>ADD3</calc_type>
+<field_a>C_ERROR_TAG</field_a>
+<field_b>V_NEW_MESSAGE</field_b>
+<field_c>C_HTML_TAG</field_c>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>Y</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>V_MESSAGE</field_name>
+<calc_type>ADD3</calc_type>
+<field_a>V_TRANSFORMATION</field_a>
+<field_b>C_HTML_TAG</field_b>
+<field_c>V_ERROR</field_c>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1068</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -240,8 +300,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1012</xloc>
-      <yloc>272</yloc>
+      <xloc>924</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -278,15 +338,15 @@
     <last_time_field>FiveSecondsAgo</last_time_field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>64</xloc>
-      <yloc>272</yloc>
+      <xloc>60</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Get System Info</name>
-    <type>SystemInfo</type>
+    <name>Get Default</name>
+    <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -297,14 +357,106 @@
            </partitioning>
     <fields>
       <field>
-        <name>V_SYS_DTTM</name>
-        <type>system date &#x28;variable&#x29;</type>
-        </field>
-      </fields>
+        <name>PRM_MAIL_S_NAME</name>
+        <variable>&#x24;&#x7b;PRM_MAIL_S_NAME&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_MAIL_S_ADDR</name>
+        <variable>&#x24;&#x7b;PRM_MAIL_S_ADDR&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_MAIL_R_ADDR</name>
+        <variable>&#x24;&#x7b;PRM_MAIL_R_ADDR&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_MAIL_R_NAME</name>
+        <variable>&#x24;&#x7b;PRM_MAIL_R_NAME&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_SMTP_SERVER</name>
+        <variable>&#x24;&#x7b;PRM_SMTP_SERVER&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_SMTP_PORT</name>
+        <variable>&#x24;&#x7b;PRM_SMTP_PORT&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_AUTH_U_NAME</name>
+        <variable>&#x24;&#x7b;PRM_AUTH_U_NAME&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRM_AUTH_U_PASS</name>
+        <variable>&#x24;&#x7b;PRM_AUTH_U_PASS&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1170</xloc>
-      <yloc>272</yloc>
+      <xloc>1212</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -321,47 +473,11 @@
            <schema_name/>
            </partitioning>
     <fields>
-      <field>
-        <name>PRM_ERROR_MSG</name>
-        <variable>&#x24;&#x7b;PRM_ERROR_MSG&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>0</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>PRM_TRANSFORMATION_NAME</name>
-        <variable>&#x24;&#x7b;PRM_TRANSFORMATION_NAME&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>0</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SYSTEM</name>
-        <variable>&#x24;&#x7b;PRM_SYSTEM&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>0</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>222</xloc>
-      <yloc>272</yloc>
+      <xloc>204</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -381,17 +497,23 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var V_NEW_MESSAGE&#x3b;&#xd;&#xa;&#xd;&#xa;if&#x28;V_NEW_MESSAGE &#x3d;&#x3d; null&#x29;&#xd;&#xa;&#x7b;&#xd;&#xa;	V_NEW_MESSAGE&#x3d; PRM_ERROR_MSG.replace&#x28;&#x27;&#x25;&#x27;&#x2b;parameter&#x2b;&#x27;&#x25;&#x27;, parameter_value&#x29;&#x3b;	&#xd;&#xa;&#x7d;&#xd;&#xa;else&#xd;&#xa;&#x7b;&#xd;&#xa;	V_NEW_MESSAGE&#x3d; V_NEW_MESSAGE.replace&#x28;&#x27;&#x25;&#x27;&#x2b;parameter&#x2b;&#x27;&#x25;&#x27;, parameter_value&#x29;&#x3b;&#xd;&#xa;&#x7d;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var V_NEW_MESSAGE&#x3b;&#xd;&#xa;var C_MAIL_SYBJECT&#x3d;&#x27;PDI Error Handling&#x27;&#xd;&#xa;&#xd;&#xa;if&#x28;V_NEW_MESSAGE &#x3d;&#x3d; null&#x29;&#xd;&#xa;&#x7b;&#xd;&#xa;	V_NEW_MESSAGE&#x3d; PRM_ERROR_MSG.replace&#x28;&#x27;&#x25;&#x27;&#x2b;parameter&#x2b;&#x27;&#x25;&#x27;, parameter_value&#x29;&#x3b;	&#xd;&#xa;&#x7d;&#xd;&#xa;else&#xd;&#xa;&#x7b;&#xd;&#xa;	V_NEW_MESSAGE&#x3d; V_NEW_MESSAGE.replace&#x28;&#x27;&#x25;&#x27;&#x2b;parameter&#x2b;&#x27;&#x25;&#x27;, parameter_value&#x29;&#x3b;&#xd;&#xa;&#x7d;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>V_NEW_MESSAGE</name>
         <rename>V_NEW_MESSAGE</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
+      </field>      <field>        <name>C_MAIL_SYBJECT</name>
+        <rename>C_MAIL_SYBJECT</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>538</xloc>
-      <yloc>272</yloc>
+      <xloc>492</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -408,20 +530,17 @@
            <schema_name/>
            </partitioning>
    <typefield>parameter</typefield>
-    <fields>      <field>        <name>SYSTEM</name>
-        <value>SYSTEM</value>
-        <norm>parameter_value</norm>
-        </field>      </fields>     <cluster_schema/>
+    <fields>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>380</xloc>
-      <yloc>272</yloc>
+      <xloc>348</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Write log</name>
-    <type>TableOutput</type>
+    <name>Send Mail</name>
+    <type>Mail</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -430,41 +549,52 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>DS_LOG</connection>
-    <schema/>
-    <table>tb_log</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-        <field>
-          <column_name>error_dttm</column_name>
-          <stream_name>V_SYS_DTTM</stream_name>
-        </field>
-        <field>
-          <column_name>error_desc</column_name>
-          <stream_name>V_NEW_MESSAGE</stream_name>
-        </field>
-        <field>
-          <column_name>transformation_name</column_name>
-          <stream_name>PRM_TRANSFORMATION_NAME</stream_name>
-        </field>
-    </fields>
+      <server>PRM_SMTP_SERVER</server>
+      <port>PRM_SMTP_PORT</port>
+      <destination>PRM_MAIL_R_ADDR</destination>
+      <destinationCc/>
+      <destinationBCc/>
+      <replyToAddresses/>
+      <replyto>PRM_MAIL_S_ADDR</replyto>
+      <replytoname>PRM_MAIL_S_NAME</replytoname>
+      <subject>C_MAIL_SYBJECT</subject>
+      <include_date>Y</include_date>
+      <include_subfolders>N</include_subfolders>
+      <zipFilenameDynamic>N</zipFilenameDynamic>
+      <isFilenameDynamic>N</isFilenameDynamic>
+      <attachContentFromField>N</attachContentFromField>
+      <attachContentField/>
+      <attachContentFileNameField/>
+      <dynamicFieldname/>
+      <dynamicWildcard/>
+      <dynamicZipFilename/>
+      <sourcefilefoldername/>
+      <sourcewildcard/>
+      <contact_person/>
+      <contact_phone/>
+      <comment>V_MESSAGE</comment>
+      <include_files>N</include_files>
+      <zip_files>N</zip_files>
+      <zip_name/>
+      <zip_limit_size>0</zip_limit_size>
+      <use_auth>Y</use_auth>
+      <use_secure_auth>Y</use_secure_auth>
+      <auth_user>PRM_AUTH_U_NAME</auth_user>
+      <auth_password>Encrypted 2bec8fd8535e6a7b083269b4feeb39ce9</auth_password>
+      <only_comment>Y</only_comment>
+      <use_HTML>Y</use_HTML>
+      <use_Priority>Y</use_Priority>
+    <encoding>UTF-8</encoding>
+    <priority>normal</priority>
+    <importance>high</importance>
+    <sensitivity>normal</sensitivity>
+    <secureconnectiontype>TLS</secureconnectiontype>
+      <embeddedimages>
+      </embeddedimages>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1328</xloc>
-      <yloc>272</yloc>
+      <xloc>1356</xloc>
+      <yloc>227</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

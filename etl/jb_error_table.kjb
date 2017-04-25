@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>jb_handle_errors</name>
+  <name>jb_error_table</name>
     <description/>
     <extended_description/>
     <job_version/>
     <job_status>0</job_status>
   <directory>&#x2f;</directory>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;12&#x2f;09 16&#x3a;25&#x3a;36.016</created_date>
+  <created_date>2017&#x2f;03&#x2f;13 15&#x3a;01&#x3a;19.879</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;12&#x2f;09 16&#x3a;25&#x3a;36.016</modified_date>
+  <modified_date>2017&#x2f;03&#x2f;13 15&#x3a;01&#x3a;19.879</modified_date>
     <parameters>
         <parameter>
             <name>PRM_ERROR_CODE</name>
-            <default_value>010101</default_value>
-            <description>Error Code</description>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>PRM_ERROR_MSG</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>PRM_LEVEL</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>PRM_SUBSYSTEM</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>PRM_SYSTEM</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>PRM_TRANSFORMATION_NAME</name>
+            <default_value/>
+            <description/>
         </parameter>
     </parameters>
     <slaveservers>
@@ -57,16 +82,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>352</yloc>
+      <xloc>200</xloc>
+      <yloc>95</yloc>
       </entry>
     <entry>
-      <name>tr_set_error_vars</name>
+      <name>Inject Table</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;etl&#x2f;tr_set_error_vars.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;tr_inject_table.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -87,36 +112,62 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-            <parameter>            <name>PRM_ERROR_CODE</name>
+            <parameter>            <name>PRM_ERROR_MSG</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;PRM_ERROR_MSG&#x7d;</value>
+            </parameter>            <parameter>            <name>PRM_TEMPLATE</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;template&#x5c;tr_error_table.ktr</value>
+            </parameter>            <parameter>            <name>PRM_TRANSFORMATION</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;tr_error_table.ktr</value>
+            </parameter>            <parameter>            <name>PRM_ERROR_CODE</name>
             <stream_name/>
             <value>&#x24;&#x7b;PRM_ERROR_CODE&#x7d;</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>880</xloc>
-      <yloc>352</yloc>
+      <xloc>556</xloc>
+      <yloc>95</yloc>
       </entry>
     <entry>
-      <name>Abort&#x3f;</name>
+      <name>Error Table</name>
       <description/>
-      <type>SIMPLE_EVAL</type>
-      <valuetype>variable</valuetype>
-      <fieldname/>
-      <variablename>&#x24;&#x7b;V_ABORT&#x7d;</variablename>
-      <fieldtype>string</fieldtype>
-      <mask/>
-      <comparevalue>Yes</comparevalue>
-      <minvalue/>
-      <maxvalue/>
-      <successcondition>equal</successcondition>
-      <successnumbercondition>equal</successnumbercondition>
-      <successbooleancondition>false</successbooleancondition>
-      <successwhenvarset>N</successwhenvarset>
-      <parallel>N</parallel>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;tr_error_table.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+            <parameter>            <name>PRM_ERROR_MSG</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;PRM_ERROR_MSG&#x7d;</value>
+            </parameter>            <parameter>            <name>PRM_TRANSFORMATION_NAME</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;PRM_TRANSFORMATION_NAME&#x7d;</value>
+            </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1136</xloc>
-      <yloc>352</yloc>
+      <xloc>734</xloc>
+      <yloc>95</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -125,8 +176,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1392</xloc>
-      <yloc>352</yloc>
+      <xloc>912</xloc>
+      <yloc>95</yloc>
       </entry>
     <entry>
       <name>Abort job</name>
@@ -136,45 +187,26 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1136</xloc>
-      <yloc>512</yloc>
+      <xloc>556</xloc>
+      <yloc>236</yloc>
       </entry>
     <entry>
-      <name>jb_check_error_handling_environment</name>
+      <name>Delete file</name>
       <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;etl&#x2f;jb_check_error_handling_environment.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <type>DELETE_FILE</type>
+      <filename>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;tr_error_table.ktr</filename>
+      <fail_if_file_not_exists>N</fail_if_file_not_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>444</xloc>
-      <yloc>352</yloc>
+      <xloc>378</xloc>
+      <yloc>95</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
-      <from>tr_set_error_vars</from>
-      <to>Abort&#x3f;</to>
+      <from>Inject Table</from>
+      <to>Error Table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -182,8 +214,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Abort&#x3f;</from>
+      <from>Error Table</from>
       <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Inject Table</from>
+      <to>Abort job</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -191,8 +232,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Abort&#x3f;</from>
+      <from>Error Table</from>
       <to>Abort job</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Delete file</from>
+      <to>Inject Table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -200,50 +250,25 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
+      <from>Delete file</from>
+      <to>Abort job</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
-      <to>jb_check_error_handling_environment</to>
+      <to>Delete file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
-    <hop>
-      <from>jb_check_error_handling_environment</from>
-      <to>tr_set_error_vars</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
   </hops>
   <notepads>
-    <notepad>
-      <note>This job receives an error code and uses the information in &#x27;metadata&#x2f;error_codes.xlsx&#x27; to determine the actions to take. &#xa;TODO&#x3a; &#xa;- add checks to see if &#x27;metadata&#x2f;error_codes.xlsx&#x27; contains error codes that contain database logging. &#xa;  If it does, check the connection, create the table if need, proceed if successful. &#xa;- implement database error logging &#xa;- implement email notification&#x2f;logging &#xa;&#xa;If all actions are completed successfully, check if the job needs to be aborted, possibly based on error level &#x28;abort if &#x27;level &#x3e;&#x3d; ERROR&#x27;&#x29;</note>
-      <xloc>144</xloc>
-      <yloc>96</yloc>
-      <width>1648</width>
-      <heigth>234</heigth>
-      <fontname/>
-      <fontsize>-1</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
-<attributes><group><name>JobRestart</name>
-<attribute><key>UniqueConnections</key>
-<value>N</value>
-</attribute></group></attributes>
 
 </job>
