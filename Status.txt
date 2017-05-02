@@ -16,3 +16,13 @@ ToDo
 ------------
 * Database Validation
 * File Validation
+
+02/05/2017
+------------
+Database Validation
+* Table Exists
+* Column Exists	
+File Validation
+* Error Codes
+* Table information
+

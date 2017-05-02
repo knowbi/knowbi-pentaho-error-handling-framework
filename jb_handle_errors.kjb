@@ -14,7 +14,12 @@
         <parameter>
             <name>PRM_ERROR_CODE</name>
             <default_value>010101</default_value>
-            <description>Error Code</description>
+            <description>Six digit error code&#x3a; system, subsystem, level. </description>
+        </parameter>
+        <parameter>
+            <name>PRM_TRANSFORMATION_NAME</name>
+            <default_value/>
+            <description>The name of the transformation or job resulting in error</description>
         </parameter>
     </parameters>
     <slaveservers>
@@ -90,6 +95,9 @@
             <parameter>            <name>PRM_ERROR_CODE</name>
             <stream_name/>
             <value>&#x24;&#x7b;PRM_ERROR_CODE&#x7d;</value>
+            </parameter>            <parameter>            <name>PRM_TRANSFORMATION_NAME</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;PRM_TRANSFORMATION_NAME&#x7d;</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -163,7 +171,10 @@
       <create_parent_folder>N</create_parent_folder>
       <pass_export>N</pass_export>
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <set_append_logfile>N</set_append_logfile>
+            <parameter>            <name>PRM_ERROR_CODE</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;PRM_ERROR_CODE&#x7d;</value>
+            </parameter>      </parameters>      <set_append_logfile>N</set_append_logfile>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>

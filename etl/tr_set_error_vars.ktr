@@ -97,7 +97,7 @@
   <hop> <from>LU Level</from><to>LU Error Code</to><enabled>Y</enabled> </hop>
   <hop> <from>Read Error Actions</from><to>LU Error Code</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter Table</from><to>Unique Rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique Rows</from><to>Set V_ABORT</to><enabled>N</enabled> </hop>
+  <hop> <from>Unique Rows</from><to>Set V_ABORT</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter Mail</from><to>Unique Rows</to><enabled>Y</enabled> </hop>
   <hop> <from>LU Error Code</from><to>Log Error Information</to><enabled>Y</enabled> </hop>
   <hop> <from>Log Error Information</from><to>Filter Mail</to><enabled>Y</enabled> </hop>
