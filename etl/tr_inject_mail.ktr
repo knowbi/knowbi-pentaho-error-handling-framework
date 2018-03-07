@@ -94,13 +94,13 @@
   <order>
   <hop> <from>Read Parameters</from><to>Get Variables</to><enabled>Y</enabled> </hop>
   <hop> <from>Get Variables</from><to>Calc param</to><enabled>Y</enabled> </hop>
-  <hop> <from>Calc param</from><to>Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Add error_msg</from><to>Get Variables</to><enabled>Y</enabled> </hop>
   <hop> <from>Block this step until steps finish</from><to>Inject Get variables</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter rows</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>Filter default</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter default</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calc param</from><to>Filter rows</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add error_msg</name>
@@ -155,7 +155,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>112</xloc>
-      <yloc>167</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -179,8 +179,8 @@
       </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>932</xloc>
-      <yloc>189</yloc>
+      <xloc>944</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -200,7 +200,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var value &#x3d; &#x22;&#x25;&#x22;&#x2b;message_value&#x2b;&#x22;&#x25;&#x22;&#x3b;&#xd;&#xa;var param_ind&#x3d;0&#x3b;&#xd;&#xa;&#xd;&#xa;if&#x28;indexOf&#x28;PRM_ERROR_MSG,value&#x29;&#x3e; -1&#x29;&#xd;&#xa;&#x7b;&#xd;&#xa;	param_ind&#x3d;1&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;else&#xd;&#xa;&#x7b;&#xd;&#xa;	param_ind&#x3d;0&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;var parameter_syntax &#x3d; &#x22;&#x24;&#x7b;&#x22;&#x2b;parameter&#x2b;&#x22;&#x7d;&#x22;&#x3b;&#xd;&#xa;var C_NORMALIZED &#x3d; &#x22;parameter_value&#x22;&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var value &#x3d; &#x22;&#x25;&#x22;&#x2b;message_value&#x2b;&#x22;&#x25;&#x22;&#x3b;&#xa;var param_ind&#x3d;0&#x3b;&#xa;&#xa;if&#x28;indexOf&#x28;PRM_ERROR_MSG,value&#x29;&#x3e; -1&#x29;&#xa;&#x7b;&#xa;	param_ind&#x3d;1&#x3b;&#xa;&#x7d;&#xa;else&#xa;&#x7b;&#xa;	param_ind&#x3d;0&#x3b;&#xa;&#x7d;&#xa;&#xa;var parameter_syntax &#x3d; &#x22;&#x24;&#x7b;&#x22;&#x2b;parameter&#x2b;&#x22;&#x7d;&#x22;&#x3b;&#xa;var C_NORMALIZED &#x3d; &#x22;parameter_value&#x22;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>param_ind</name>
         <rename>param_ind</rename>
         <type>Integer</type>
@@ -222,7 +222,7 @@
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>522</xloc>
-      <yloc>51</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -240,8 +240,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>932</xloc>
-      <yloc>51</yloc>
+      <xloc>944</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -284,8 +284,8 @@
         <source_field>message_value</source_field>
       </mapping>    </mappings>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1342</xloc>
-      <yloc>51</yloc>
+      <xloc>1552</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -313,8 +313,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1137</xloc>
-      <yloc>51</yloc>
+      <xloc>1232</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -354,8 +354,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>727</xloc>
-      <yloc>51</yloc>
+      <xloc>736</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -412,7 +412,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>317</xloc>
-      <yloc>51</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -432,11 +432,11 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var V_PARAM_SYNTAX&#x3b;&#xd;&#xa;if&#x28;V_PARAM_SYNTAX &#x3d;&#x3d; null&#x29;&#xd;&#xa;&#x7b;&#xd;&#xa;	V_PARAM_SYNTAX&#x3d;new Array&#x28;&#x29;&#x3b;&#xd;&#xa;	V_PARAM_SYNTAX.push&#x28;parameter_syntax&#x29;&#x3b;&#xd;&#xa;	&#xd;&#xa;&#x7d;&#xd;&#xa;else&#xd;&#xa;&#x7b; &#xd;&#xa;	V_PARAM_SYNTAX.push&#x28;parameter_syntax&#x29;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;var V_PARAM_NAME&#x3b;&#xd;&#xa;if&#x28;V_PARAM_NAME &#x3d;&#x3d; null&#x29;&#xd;&#xa;&#x7b;&#xd;&#xa;	V_PARAM_NAME&#x3d;new Array&#x28;&#x29;&#x3b;&#xd;&#xa;	V_PARAM_NAME.push&#x28;message_value&#x29;&#x3b;&#xd;&#xa;	&#xd;&#xa;&#x7d;&#xd;&#xa;else&#xd;&#xa;&#x7b; &#xd;&#xa;	V_PARAM_NAME.push&#x28;message_value&#x29;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#x2f;&#x2f;Meta-Injection&#xd;&#xa;var meta&#x3d;new org.pentaho.di.trans.TransMeta&#x28; replace&#x28;PRM_TRANSFORMATION,&#x22;file&#x3a;&#x2f;&#x2f;&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;&#xd;&#xa;var MergeStep &#x3d; meta.findStep&#x28;&#x22;Get Variables&#x22;&#x29;&#x3b;&#xd;&#xa;var MergeStepMeta &#x3d; MergeStep.getStepMetaInterface&#x28;&#x29;&#x3b;&#xd;&#xa;&#xd;&#xa;MergeStepMeta.allocate&#x28;V_PARAM_SYNTAX.length&#x29;&#x3b;&#xd;&#xa;MergeStepMeta.setFieldName&#x28;V_PARAM_NAME&#x29;&#x3b;&#xd;&#xa;MergeStepMeta.setVariableString&#x28;V_PARAM_SYNTAX&#x29;&#x3b;&#xd;&#xa;&#xd;&#xa;&#x2f;&#x2f;Write XML File&#xd;&#xa;meta.writeXML&#x28;replace&#x28;PRM_TRANSFORMATION,&#x22;file&#x3a;&#x2f;&#x2f;&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var V_PARAM_SYNTAX&#x3b;&#xa;if&#x28;V_PARAM_SYNTAX &#x3d;&#x3d; null&#x29;&#xa;&#x7b;&#xa;	V_PARAM_SYNTAX&#x3d;new Array&#x28;&#x29;&#x3b;&#xa;	V_PARAM_SYNTAX.push&#x28;parameter_syntax&#x29;&#x3b;&#xa;	&#xa;&#x7d;&#xa;else&#xa;&#x7b; &#xa;	V_PARAM_SYNTAX.push&#x28;parameter_syntax&#x29;&#x3b;&#xa;&#x7d;&#xa;var V_PARAM_NAME&#x3b;&#xa;if&#x28;V_PARAM_NAME &#x3d;&#x3d; null&#x29;&#xa;&#x7b;&#xa;	V_PARAM_NAME&#x3d;new Array&#x28;&#x29;&#x3b;&#xa;	V_PARAM_NAME.push&#x28;message_value&#x29;&#x3b;&#xa;	&#xa;&#x7d;&#xa;else&#xa;&#x7b; &#xa;	V_PARAM_NAME.push&#x28;message_value&#x29;&#x3b;&#xa;&#x7d;&#xa;&#xa;&#x2f;&#x2f;Meta-Injection&#xa;var meta&#x3d;new org.pentaho.di.trans.TransMeta&#x28; replace&#x28;PRM_TRANSFORMATION,&#x22;file&#x3a;&#x2f;&#x2f;&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xa;&#xa;var MergeStep &#x3d; meta.findStep&#x28;&#x22;Get Variables&#x22;&#x29;&#x3b;&#xa;var MergeStepMeta &#x3d; MergeStep.getStepMetaInterface&#x28;&#x29;&#x3b;&#xa;&#xa;MergeStepMeta.allocate&#x28;V_PARAM_SYNTAX.length&#x29;&#x3b;&#xa;MergeStepMeta.setFieldName&#x28;V_PARAM_NAME&#x29;&#x3b;&#xa;MergeStepMeta.setVariableString&#x28;V_PARAM_SYNTAX&#x29;&#x3b;&#xa;&#xa;&#x2f;&#x2f;Write XML File&#xa;meta.writeXML&#x28;replace&#x28;PRM_TRANSFORMATION,&#x22;file&#x3a;&#x2f;&#x2f;&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1137</xloc>
-      <yloc>186</yloc>
+      <xloc>1232</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -540,7 +540,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>112</xloc>
-      <yloc>51</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

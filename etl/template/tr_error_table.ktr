@@ -94,8 +94,8 @@
       <note>Implement error logging to table.&#xa;kettle.properties to use &#x28;e.g.&#x29;&#x3a;&#xa;DB_LOG_HOST&#x3d;localhost&#xa;DB_LOG_DB&#x3d;logging&#xa;DB_LOG_PORT&#x3d;5432&#xa;DB_LOG_USER&#x3d;logging&#xa;DB_LOG_PASS&#x3d;logging &#xa;&#xd;&#xa;JNDI Connection DS_LOG</note>
       <xloc>44</xloc>
       <yloc>38</yloc>
-      <width>145</width>
-      <heigth>110</heigth>
+      <width>319</width>
+      <heigth>217</heigth>
       <fontname>Sans</fontname>
       <fontsize>7</fontsize>
       <fontbold>N</fontbold>
@@ -116,15 +116,17 @@
     <name>DS_LOG</name>
     <server/>
     <type>GENERIC</type>
-    <access>JNDI</access>
+    <access>Native</access>
     <database>DS_LOG</database>
     <port>1521</port>
-    <username/>
-    <password>Encrypted </password>
+    <username>&#x24;&#x7b;ds_log_user&#x7d;</username>
+    <password>&#x24;&#x7b;ds_log_pass&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ds_log_class&#x7d;</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ds_log_url&#x7d;</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
