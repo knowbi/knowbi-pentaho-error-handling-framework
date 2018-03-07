@@ -1,0 +1,28 @@
+*********************Project Status**************************************
+25/04/2017
+------------
+Error Mail
+* Send Error mail to parameters from kettle properties file
+* Replace parameters in error message dynamic
+!!! Message without parameters is not send !!!
+Error Table
+* Write Error to table of choosing using JNDI connection DS_LOG (Generic db connection)
+* Write Error to default table using JNDI connection DS_LOG (Generic db connection)
+* Write Error for specific error/ All error
+* Replace parameters in error message dynamic
+!!! Message without parameters is not inserted !!!
+
+ToDo
+------------
+* Database Validation
+* File Validation
+
+02/05/2017
+------------
+Database Validation
+* Table Exists
+* Column Exists	
+File Validation
+* Error Codes
+* Table information
+
