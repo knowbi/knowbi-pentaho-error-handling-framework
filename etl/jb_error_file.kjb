@@ -457,7 +457,7 @@
       <name>File Exists</name>
       <description />
       <type>FILE_EXISTS</type>
-      <filename>${PRM_FILE_LOCATION}/error_log.txt</filename>
+      <filename>${ERR_FILE_LOCATION}/error_log.txt</filename>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>

@@ -435,6 +435,57 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>essentlogging</name>
+    <server>${essentlogging_host}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${essentlogging_dbnm}</database>
+    <port>${essentlogging_port}</port>
+    <username>${essentlogging_user}</username>
+    <password>${essentlogging_pass}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${essentlogging_port}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>Generate Rows</from>
@@ -509,7 +560,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>448</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -588,7 +639,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
+      <xloc>720</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -618,7 +669,7 @@
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${PRM_FILE_LOCATION}\error_log</name>
+      <name>${ERR_FILE_LOCATION}/error_log</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -681,7 +732,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>944</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
