@@ -461,19 +461,19 @@
     <access>Native</access>
     <database>DS_LOG</database>
     <port>1521</port>
-    <username>${ds_log_user}</username>
-    <password>${ds_log_pass}</password>
+    <username>${ds.log.user}</username>
+    <password>${ds.log.pass}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
     <attributes>
       <attribute>
         <code>CUSTOM_DRIVER_CLASS</code>
-        <attribute>${ds_log_class}</attribute>
+        <attribute>${ds.log.class}</attribute>
       </attribute>
       <attribute>
         <code>CUSTOM_URL</code>
-        <attribute>${ds_log_url}</attribute>
+        <attribute>${ds.log.url}</attribute>
       </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>

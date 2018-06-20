@@ -119,14 +119,14 @@
     <access>Native</access>
     <database>DS_LOG</database>
     <port>1521</port>
-    <username>&#x24;&#x7b;ds_log_user&#x7d;</username>
-    <password>&#x24;&#x7b;ds_log_pass&#x7d;</password>
+    <username>&#x24;&#x7b;ds.log.user&#x7d;</username>
+    <password>&#x24;&#x7b;ds.log.pass&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ds_log_class&#x7d;</attribute></attribute>
-      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ds_log_url&#x7d;</attribute></attribute>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>&#x24;&#x7b;ds.log.class&#x7d;</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>&#x24;&#x7b;ds.log.url&#x7d;</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>

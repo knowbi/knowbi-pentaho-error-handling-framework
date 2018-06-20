@@ -435,6 +435,57 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>essentlogging</name>
+    <server>${essentlogging_host}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${essentlogging_dbnm}</database>
+    <port>${essentlogging_port}</port>
+    <username>${essentlogging_user}</username>
+    <password>${essentlogging_pass}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${essentlogging_port}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>Calc new_message</from>
@@ -733,8 +784,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_MAIL_S_NAME</name>
-        <variable>${PRM_MAIL_S_NAME}</variable>
+        <name>mail.sender.name</name>
+        <variable>${mail.sender.name}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -745,8 +796,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_MAIL_S_ADDR</name>
-        <variable>${PRM_MAIL_S_ADDR}</variable>
+        <name>mail.sender.address</name>
+        <variable>${mail.sender.address}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -757,8 +808,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_MAIL_R_ADDR</name>
-        <variable>${PRM_MAIL_R_ADDR}</variable>
+        <name>mail.recv.address</name>
+        <variable>${mail.recv.address}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -769,8 +820,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_MAIL_R_NAME</name>
-        <variable>${PRM_MAIL_R_NAME}</variable>
+        <name>mail.recv.name</name>
+        <variable>${mail.recv.name}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -781,8 +832,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_SMTP_SERVER</name>
-        <variable>${PRM_SMTP_SERVER}</variable>
+        <name>mail.smtp.server</name>
+        <variable>${mail.smtp.server}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -793,8 +844,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_SMTP_PORT</name>
-        <variable>${PRM_SMTP_PORT}</variable>
+        <name>mail.smtp.port</name>
+        <variable>${mail.smtp.port}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -805,8 +856,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_AUTH_U_NAME</name>
-        <variable>${PRM_AUTH_U_NAME}</variable>
+        <name>mail.user.name</name>
+        <variable>${mail.user.name}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -817,8 +868,8 @@ if(V_NEW_MESSAGE == undefined)
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PRM_AUTH_U_PASS</name>
-        <variable>${PRM_AUTH_U_PASS}</variable>
+        <name>mail.user.pass</name>
+        <variable>${mail.user.pass}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -877,14 +928,14 @@ if(V_NEW_MESSAGE == undefined)
       <method>none</method>
       <schema_name />
     </partitioning>
-    <server>PRM_SMTP_SERVER</server>
-    <port>PRM_SMTP_PORT</port>
-    <destination>PRM_MAIL_R_ADDR</destination>
+    <server>mail.smtp.server</server>
+    <port>mail.smtp.port</port>
+    <destination>mail.recv.address</destination>
     <destinationCc />
     <destinationBCc />
     <replyToAddresses />
-    <replyto>PRM_MAIL_S_ADDR</replyto>
-    <replytoname>PRM_MAIL_S_NAME</replytoname>
+    <replyto>mail.sender.address</replyto>
+    <replytoname>mail.sender.name</replytoname>
     <subject>C_SUBJECT</subject>
     <include_date>Y</include_date>
     <include_subfolders>N</include_subfolders>
@@ -907,8 +958,8 @@ if(V_NEW_MESSAGE == undefined)
     <zip_limit_size>0</zip_limit_size>
     <use_auth>Y</use_auth>
     <use_secure_auth>Y</use_secure_auth>
-    <auth_user>PRM_AUTH_U_NAME</auth_user>
-    <auth_password>Encrypted 2bec8fd8535e6a7b083269b4feeb39ce9</auth_password>
+    <auth_user>mail.user.name</auth_user>
+    <auth_password>Encrypted 2be98c2a903cbdc91b81cbc3ece93bcc9</auth_password>
     <only_comment>Y</only_comment>
     <use_HTML>Y</use_HTML>
     <use_Priority>Y</use_Priority>
