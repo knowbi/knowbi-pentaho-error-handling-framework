@@ -9,6 +9,11 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>PRM_INFO</name>
+        <default_value />
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -436,57 +441,6 @@
   </info>
   <notepads>
   </notepads>
-  <connection>
-    <name>essentlogging</name>
-    <server>${essentlogging_host}</server>
-    <type>POSTGRESQL</type>
-    <access>Native</access>
-    <database>${essentlogging_dbnm}</database>
-    <port>${essentlogging_port}</port>
-    <username>${essentlogging_user}</username>
-    <password>${essentlogging_pass}</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
-    <attributes>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>${essentlogging_port}</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
       <from>Get Variables</from>
@@ -702,6 +656,18 @@ var Error = level;</jsScript_script>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
+      <field>
+        <name>PRM_INFO</name>
+        <variable>${PRM_INFO}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -785,6 +751,18 @@ var Error = level;</jsScript_script>
       </field>
       <field>
         <name>Error</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PRM_INFO</name>
         <type>String</type>
         <format />
         <currency />
