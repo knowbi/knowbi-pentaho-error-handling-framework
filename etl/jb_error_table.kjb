@@ -334,6 +334,7 @@
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -349,18 +350,20 @@
       <nr>0</nr>
       <xloc>416</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Write to Table</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${Internal.Job.Filename.Directory}/tr_error_table.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>Y</params_from_previous>
-      <exec_per_row>N</exec_per_row>
+      <exec_per_row>Y</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
@@ -420,32 +423,38 @@
       <nr>0</nr>
       <xloc>688</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Success</name>
       <description/>
       <type>SUCCESS</type>
+      <attributes/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>832</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Abort job</name>
       <description/>
       <type>ABORT</type>
+      <attributes/>
       <message/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>688</xloc>
       <yloc>240</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Get table info</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${Internal.Job.Filename.Directory}/tr_get_table_name.ktr</filename>
@@ -482,6 +491,7 @@
       <nr>0</nr>
       <xloc>560</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>

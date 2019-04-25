@@ -11,37 +11,37 @@
     <parameters>
       <parameter>
         <name>PRM_ERROR_CODE</name>
-        <default_value>010101</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_ERROR_MSG</name>
-        <default_value>Horrible error on %SYSTEM%, %SUBSYSTEM%, %LEVEL%</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_LEVEL</name>
-        <default_value>All levels including custom levels.</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_SUBSYSTEM</name>
-        <default_value>get files</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_SYSTEM</name>
-        <default_value>sales</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_TABLE_NAME</name>
-        <default_value>tb_sales_log</default_value>
+        <default_value/>
         <description/>
       </parameter>
       <parameter>
         <name>PRM_TRANSFORMATION_NAME</name>
-        <default_value>test</default_value>
+        <default_value/>
         <description/>
       </parameter>
     </parameters>
@@ -625,6 +625,7 @@ JNDI Connection DS_LOG</note>
     <start_at>1</start_at>
     <increment_by>1</increment_by>
     <max_value>999999999</max_value>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -667,6 +668,7 @@ JNDI Connection DS_LOG</note>
         <valuefield/>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -701,6 +703,7 @@ JNDI Connection DS_LOG</note>
         <rightvalue>V_MAX_COUNTER_PARAM</rightvalue>
       </condition>
     </compare>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -731,6 +734,7 @@ JNDI Connection DS_LOG</note>
         <type>system date (variable)</type>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -829,6 +833,7 @@ JNDI Connection DS_LOG</note>
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -918,6 +923,7 @@ Alert(str2);</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -973,6 +979,7 @@ Alert(str2);</jsScript_script>
         <stream_name>PRM_TRANSFORMATION_NAME</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -991,4 +998,5 @@ Alert(str2);</jsScript_script>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes/>
 </transformation>
