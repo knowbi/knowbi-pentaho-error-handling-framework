@@ -1,0 +1,6 @@
+*.xlsx 
+*.xlsx# 
+*.properties
+*.txt
+
+.kettle/

@@ -475,57 +475,6 @@
       <drawshadow>Y</drawshadow>
     </notepad>
   </notepads>
-  <connection>
-    <name>essentlogging</name>
-    <server>${essentlogging_host}</server>
-    <type>POSTGRESQL</type>
-    <access>Native</access>
-    <database>${essentlogging_dbnm}</database>
-    <port>${essentlogging_port}</port>
-    <username>${essentlogging_user}</username>
-    <password>${essentlogging_pass}</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
-    <attributes>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>${essentlogging_port}</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
       <from>Read Database</from>
@@ -565,7 +514,7 @@
     <hop>
       <from>Write Empty Stream</from>
       <to>Abort</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Filter table</from>
@@ -592,7 +541,8 @@
     <row_threshold>0</row_threshold>
     <message>Missing database information</message>
     <always_log_rows>Y</always_log_rows>
-    <abort_with_error>Y</abort_with_error>
+    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -602,7 +552,7 @@
     </remotesteps>
     <GUI>
       <xloc>1584</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -620,7 +570,8 @@
     <row_threshold>0</row_threshold>
     <message>Missing Table fields</message>
     <always_log_rows>N</always_log_rows>
-    <abort_with_error>Y</abort_with_error>
+    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -630,7 +581,7 @@
     </remotesteps>
     <GUI>
       <xloc>1328</xloc>
-      <yloc>256</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -645,6 +596,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -659,30 +611,6 @@
     </GUI>
   </step>
   <step>
-    <name>Detect empty stream</name>
-    <type>DetectEmptyStream</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>D</name>
     <type>Dummy</type>
     <description />
@@ -693,6 +621,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -702,7 +631,32 @@
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Detect empty stream</name>
+    <type>DetectEmptyStream</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -739,6 +693,7 @@
         </conditions>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -748,7 +703,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>128</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -836,6 +791,7 @@
         </conditions>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -845,7 +801,7 @@
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>272</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -874,6 +830,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -883,7 +840,7 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1019,6 +976,7 @@
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1028,7 +986,7 @@
     </remotesteps>
     <GUI>
       <xloc>109</xloc>
-      <yloc>120</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1071,6 +1029,7 @@
         <name>PRM_ERROR_CODE</name>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1080,7 +1039,7 @@
     </remotesteps>
     <GUI>
       <xloc>1360</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1123,6 +1082,7 @@
         <name>PRM_ERROR_CODE</name>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1141,4 +1101,5 @@
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
