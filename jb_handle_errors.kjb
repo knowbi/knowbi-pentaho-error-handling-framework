@@ -312,73 +312,6 @@
       <name>ROOT_CHANNEL_ID</name>
     </field>
   </channel-log-table>
-  <checkpoint-log-table>
-    <connection />
-    <schema />
-    <table />
-    <timeout_days />
-    <max_nr_retries />
-    <run_retry_period />
-    <namespace_parameter />
-    <save_parameters />
-    <save_result_rows />
-    <save_result_files />
-    <field>
-      <id>ID_JOB_RUN</id>
-      <enabled>Y</enabled>
-      <name>ID_JOB_RUN</name>
-    </field>
-    <field>
-      <id>ID_JOB</id>
-      <enabled>Y</enabled>
-      <name>ID_JOB</name>
-    </field>
-    <field>
-      <id>JOBNAME</id>
-      <enabled>Y</enabled>
-      <name>JOBNAME</name>
-    </field>
-    <field>
-      <id>NAMESPACE</id>
-      <enabled>Y</enabled>
-      <name>NAMESPACE</name>
-    </field>
-    <field>
-      <id>CHECKPOINT_NAME</id>
-      <enabled>Y</enabled>
-      <name>CHECKPOINT_NAME</name>
-    </field>
-    <field>
-      <id>CHECKPOINT_COPYNR</id>
-      <enabled>Y</enabled>
-      <name>CHECKPOINT_COPYNR</name>
-    </field>
-    <field>
-      <id>ATTEMPT_NR</id>
-      <enabled>Y</enabled>
-      <name>ATTEMPT_NR</name>
-    </field>
-    <field>
-      <id>JOB_RUN_START_DATE</id>
-      <enabled>Y</enabled>
-      <name>JOB_RUN_START_DATE</name>
-    </field>
-    <field>
-      <id>LOGDATE</id>
-      <enabled>Y</enabled>
-      <name>LOGDATE</name>
-    </field>
-    <field>
-      <id>RESULT_XML</id>
-      <enabled>Y</enabled>
-      <name>RESULT_XML</name>
-    </field>
-    <field>
-      <id>PARAMETER_XML</id>
-      <enabled>Y</enabled>
-      <name>PARAMETER_XML</name>
-    </field>
-  </checkpoint-log-table>
   <pass_batchid>N</pass_batchid>
   <shared_objects_file />
   <entries>
@@ -386,6 +319,7 @@
       <name>START</name>
       <description />
       <type>SPECIAL</type>
+      <attributes />
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -401,11 +335,13 @@
       <nr>0</nr>
       <xloc>80</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>set error vars</name>
       <description />
       <type>TRANS</type>
+      <attributes />
       <specification_method>filename</specification_method>
       <trans_object_id />
       <filename>${Internal.Job.Filename.Directory}/etl/tr_set_error_vars.ktr</filename>
@@ -447,11 +383,13 @@
       <nr>0</nr>
       <xloc>944</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Can we continue?</name>
       <description />
       <type>SIMPLE_EVAL</type>
+      <attributes />
       <valuetype>variable</valuetype>
       <fieldname />
       <variablename>${V_ABORT}</variablename>
@@ -469,36 +407,43 @@
       <nr>0</nr>
       <xloc>1232</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Success</name>
       <description />
       <type>SUCCESS</type>
+      <attributes />
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>1488</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Abort job</name>
       <description />
       <type>ABORT</type>
+      <attributes />
       <message />
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>1232</xloc>
       <yloc>480</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>check error env</name>
       <description />
       <type>JOB</type>
+      <attributes />
       <specification_method>filename</specification_method>
       <job_object_id />
       <filename>${Internal.Job.Filename.Directory}/etl/jb_check_error_handling_environment.kjb</filename>
       <jobname />
+      <directory />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -514,6 +459,7 @@
       <expand_remote_job>N</expand_remote_job>
       <create_parent_folder>N</create_parent_folder>
       <pass_export>N</pass_export>
+      <run_configuration />
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
         <parameter>
@@ -528,11 +474,13 @@
       <nr>0</nr>
       <xloc>688</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>prep env</name>
       <description />
       <type>TRANS</type>
+      <attributes />
       <specification_method>filename</specification_method>
       <trans_object_id />
       <filename>${Internal.Job.Filename.Directory}\etl\tr_set_environment_vars.ktr</filename>
@@ -564,6 +512,7 @@
       <nr>0</nr>
       <xloc>400</xloc>
       <yloc>352</yloc>
+      <attributes_kjc />
     </entry>
   </entries>
   <hops>
